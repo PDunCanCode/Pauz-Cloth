@@ -3,12 +3,14 @@ import 'firebase/firestore';
 import 'firebase/auth';
 
 const config = {
-  apiKey: 'AIzaSyCiflpMAPyFWgRXFJ0qesbUyELut0xATsM',
-  authDomain: 'crwn-clothing-live.firebaseapp.com',
-  databaseURL: 'https://crwn-clothing-live.firebaseio.com',
-  projectId: 'crwn-clothing-live',
-  storageBucket: 'crwn-clothing-live.appspot.com',
-  messagingSenderId: '355873179783'
+  apiKey: "AIzaSyCR6YymPBobqL5mu1MUpS95RVssAEMp-e8",
+    authDomain: "pauz-db.firebaseapp.com",
+    databaseURL: "https://pauz-db.firebaseio.com",
+    projectId: "pauz-db",
+    storageBucket: "pauz-db.appspot.com",
+    messagingSenderId: "246061100968",
+    appId: "1:246061100968:web:4561eaf2cf69868c3bb79d",
+    measurementId: "G-CYCNBDWNGN"
 };
 
 firebase.initializeApp(config);
