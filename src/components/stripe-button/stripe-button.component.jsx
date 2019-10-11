@@ -3,7 +3,7 @@ import StripeCheckout from 'react-stripe-checkout';
 
 const StripeCheckoutButton = ({ price }) => {
   const priceForStripe = price * 100;
-  const publishableKey = 'pk_test_WBqax2FWVzS9QlpJScO07iuL';
+  const publishableKey = 'pk_test_kvLYA12KHorL24g3aTjLu4oc00SFcodPaA';
 
   const onToken = token => {
     console.log(token);
@@ -13,7 +13,7 @@ const StripeCheckoutButton = ({ price }) => {
   return (
     <StripeCheckout
       label='Pay Now'
-      name='CRWN Clothing Ltd.'
+      name='PAUZ Clothing Co.'
       billingAddress
       shippingAddress
       image='https://svgshare.com/i/CUz.svg'
