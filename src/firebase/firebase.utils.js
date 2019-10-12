@@ -39,6 +39,17 @@ const config = {
   
     return userRef;
   };
+
+  export const addCollectionAndDocuments = (collectionKey, objectsToAdd) => {
+    const collectionRef = firestore.collection(collectionKey);
+  
+
+    const batch = firestore.batch();
+    objectsToAdd.forEach(obj => {
+      const newDocRef = collectionRef.doc();
+      console.log(newDocRef)
+    });
+  };
   
   export const addCollectionAndDocuments = async (
     collectionKey,
