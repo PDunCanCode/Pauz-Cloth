@@ -8,7 +8,13 @@ import { firestore, convertCollectionsSnapshotToMap } from '../../firebase/fireb
 
 import { updateCollections } from '../../redux/shop/shop.actions';
 
+import WithSpinner from '../../components/with-spinner/with-spinner.component';
+
 class ShopPage extends React.Component {
+  state = {
+    loading: true
+  };
+  
   unsubscribeFromSnapshot = null;
 
   componentDidMount() {
@@ -18,6 +24,7 @@ class ShopPage extends React.Component {
     this.unsubscribeFromSnapshot = collectionRef.onSnapshot(async snapshot => {
       const collectionMap = convertCollectionsSnapshotToMap(snapshot);
       updateCollections(collectionsMap);
+      this.setState({ loading: false});
     });
   }
   
