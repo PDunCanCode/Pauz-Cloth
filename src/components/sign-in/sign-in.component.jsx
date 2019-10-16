@@ -11,17 +11,11 @@ import {
   ButtonsBarContainer
 } from './sign-in.styles';
 
-class SignIn extends React.Component {
-  constructor(props) {
-    super(props);
+const SignIn = () => {
 
-    this.state = {
-      email: '',
-      password: ''
-    };
-  }
+}
 
-  handleSubmit = async event => {
+  const handleSubmit = async event => {
     event.preventDefault();
 
     const { email, password } = this.state;
@@ -34,7 +28,7 @@ class SignIn extends React.Component {
     }
   };
 
-  handleChange = event => {
+  const handleChange = event => {
     const { value, name } = event.target;
 
     this.setState({ [name]: value });
