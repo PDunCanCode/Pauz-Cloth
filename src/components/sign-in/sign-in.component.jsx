@@ -5,35 +5,41 @@ import CustomButton from '../custom-button/custom-button.component';
 
 import { auth, signInWithGoogle } from '../../firebase/firebase.utils';
 
-import {
-  SignInContainer,
-  SignInTitle,
-  ButtonsBarContainer
-} from './sign-in.styles';
+import './sign-in.styles.scss';
 
-const SignIn = ({ emailSignInStart, googleSignInStart }) => {
-  const [ userCredentials, setCredentials ] = useState({ email: '', passwrod: ''});
+class SignIn extends React.Component {
+  constructor(props) {
+    super(props);
 
-  const { email, password } = userCredentials;
+    this.state = {
+      email: '',
+      password: ''
+    };
+  }
 
-  const handleSubmit = async event => {
+  handleSubmit = async event => {
     event.preventDefault();
 
-    emailSignInStart(email, password);
+    const { email, password } = this.state;
 
-    
+    try {
+      await auth.signInWithEmailAndPassword(email, password);
+      this.setState({ email: '', password: '' });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-  const handleChange = event => {
+  handleChange = event => {
     const { value, name } = event.target;
 
-    setCredentials({...userCredentials, [name]: value });
+    this.setState({ [name]: value });
   };
 
   render() {
     return (
-      <SignInContainer>
-        <SignInTitle>I already have an account</SignInTitle>
+      <div className='sign-in'>
+        <h2>I already have an account</h2>
         <span>Sign in with your email and password</span>
 
         <form onSubmit={this.handleSubmit}>
@@ -53,14 +59,14 @@ const SignIn = ({ emailSignInStart, googleSignInStart }) => {
             label='password'
             required
           />
-          <ButtonsBarContainer>
+          <div className='buttons'>
             <CustomButton type='submit'> Sign in </CustomButton>
             <CustomButton onClick={signInWithGoogle} isGoogleSignIn>
               Sign in with Google
             </CustomButton>
-          </ButtonsBarContainer>
+          </div>
         </form>
-      </SignInContainer>
+      </div>
     );
   }
 }
