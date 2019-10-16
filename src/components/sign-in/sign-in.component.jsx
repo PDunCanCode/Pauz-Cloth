@@ -11,27 +11,23 @@ import {
   ButtonsBarContainer
 } from './sign-in.styles';
 
-const SignIn = () => {
+const SignIn = ({ emailSignInStart, googleSignInStart }) => {
+  const [ userCredentials, setCredentials ] = useState({ email: '', passwrod: ''});
 
-}
+  const { email, password } = userCredentials;
 
   const handleSubmit = async event => {
     event.preventDefault();
 
-    const { email, password } = this.state;
+    emailSignInStart(email, password);
 
-    try {
-      await auth.signInWithEmailAndPassword(email, password);
-      this.setState({ email: '', password: '' });
-    } catch (error) {
-      console.log(error);
-    }
+    
   };
 
   const handleChange = event => {
     const { value, name } = event.target;
 
-    this.setState({ [name]: value });
+    setCredentials({...userCredentials, [name]: value });
   };
 
   render() {
